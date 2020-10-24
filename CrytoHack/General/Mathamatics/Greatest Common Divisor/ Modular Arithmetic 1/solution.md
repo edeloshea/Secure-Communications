@@ -1,0 +1,1 @@
+to find i, divide x by y where x = i mod y
