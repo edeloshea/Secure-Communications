@@ -1,0 +1,1 @@
+return the sum of all items in the matric, returned to bytes
