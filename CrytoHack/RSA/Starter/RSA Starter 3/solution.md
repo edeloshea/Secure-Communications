@@ -1,0 +1,1 @@
+multiply p-1 by q-1 to get the totient
