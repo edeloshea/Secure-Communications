@@ -17,7 +17,7 @@ for num in ints:
         print (num)
 
 
-print (3%4)
+print (p%4)
     
 
 

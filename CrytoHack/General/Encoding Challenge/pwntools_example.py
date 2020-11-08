@@ -17,29 +17,27 @@ def json_send(hsh):
     request = json.dumps(hsh).encode()
     r.sendline(request)
 
-def list_to_string(s):
-    output = ""
-    return(output.join(s))
-
 for i in range(0,101):
     received = json_recv()
     if "flag" in received:
-        print("\n[*] FLAG: {}".format(received["flag"]))
+        print(received["flag"])
         break
 
-    word = received["encoded"]
-    encoding = received["type"]
+    encoded = received["encoded"]
+    
+    encType = received["type"]
 
-    if encoding == "base64":
-        decoded = base64.b64decode(word).decode('utf8').replace("'", '"')
-    elif encoding == "hex":
-        decoded = (unhexlify(word)).decode('utf8').replace("'", '"')
-    elif encoding == "rot13":
-        decoded = codecs.decode(word, 'rot_13')
-    elif encoding == "bigint":
-        decoded = unhexlify(word.replace("0x", "")).decode('utf8').replace("'", '"')
-    elif encoding == "utf-8":
-        decoded = list_to_string([chr(b) for b in word])
+    if encType == "base64":
+        decoded = base64.b64decode(encoded).decode('utf8').replace("'", '"')
+    elif encType == "hex":
+        decoded = (unhexlify(encoded)).decode('utf8').replace("'", '"')
+    elif encType == "rot13":
+        decoded = codecs.decode(encoded, 'rot_13')
+    elif encType == "bigint":
+        decoded = unhexlify(encoded.replace("0x", "")).decode('utf8').replace("'", '"')
+    elif encType == "utf-8":
+        decoded = ""
+        decoded = decoded.join([chr(b) for b in encoded])
 
     to_send = {
         "decoded": decoded
