@@ -16,6 +16,8 @@ for num in ints:
     if round(num/p) == 1: 
         print (num)
 
+
+print (3%4)
     
 
 
