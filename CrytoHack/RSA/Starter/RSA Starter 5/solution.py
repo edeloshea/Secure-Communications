@@ -5,7 +5,9 @@ e = 65537
 privKey = 121832886702415731577073962957377780195510499965398469843281
 
 c = 77578995801157823671636298847186723593814843845525223303932
-r = c**privKey
-print (r)
-flag = r%N
+##r = c**privKey
+##print (r)
+##flag = r%N
+
+flag = pow(c,privKey,N)
 print (flag)

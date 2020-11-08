@@ -24,3 +24,4 @@ def encrypt_flag(shared_secret: int):
 
 
 print(encrypt_flag(shared_secret))
+
