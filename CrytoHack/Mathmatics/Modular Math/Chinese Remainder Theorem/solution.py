@@ -4,7 +4,7 @@
 
 #x ≡ a mod 935
 
-print (2%5)
-print (3%11)
-print (5%17)
+for x in range (0,10000000000): 
+        if pow(2,5) == x:
+            print (x)
 
