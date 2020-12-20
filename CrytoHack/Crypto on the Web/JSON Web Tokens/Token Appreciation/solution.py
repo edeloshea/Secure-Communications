@@ -7,5 +7,3 @@ encoded_jwt
 
 decoded = jwt.decode(encoded_jwt, 'secret', algorithms=['HS256']) 
 {'some': 'payload'}
-
-print(decoded)
