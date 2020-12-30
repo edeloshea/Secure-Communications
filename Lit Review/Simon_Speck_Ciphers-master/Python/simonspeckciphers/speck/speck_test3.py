@@ -343,4 +343,4 @@ if __name__ == "__main__":
         ciphertext = cipher.encrypt(0x4564656c204564656c204564656c)
         print ("Ciphertext " + str(i) + " is " + str(ciphertext))
     
-
+ 

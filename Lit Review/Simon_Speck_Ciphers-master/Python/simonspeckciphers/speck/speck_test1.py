@@ -334,7 +334,7 @@ if __name__ == "__main__":
     ll = (codecs.encode(b"Edel", "hex")).decode()
     print ("The hex for Edel is 0x" + ll)
 
-    print ("The key generated is: " + str(k))
+    print ("The key generated is " + str(k))
 
     print()
     print("Encryption")
