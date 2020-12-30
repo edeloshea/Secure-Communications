@@ -1,3 +1,4 @@
+"""
 import sys
 import chilkat
 
@@ -17,3 +18,11 @@ if (success != True):
     sys.exit()
 
 print("Converted certificate from DER to PEM format.")
+"""
+
+from Crypto.PublicKey import RSA
+f = open("/home/b00139077/college/Secure-Communications/CrytoHack/General/Data Formats/CERTainly not/2048b-rsa-example-cert.der", "r")
+text = f.read()
+print (text.decode('UTF-8'))
+#key = RSA.importKey(f.read())
+#print (key)
