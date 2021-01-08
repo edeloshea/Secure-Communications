@@ -2,7 +2,6 @@
 ## 2 ** 11
 
 
-
 total = 2**11
 print (total)
 found = False
