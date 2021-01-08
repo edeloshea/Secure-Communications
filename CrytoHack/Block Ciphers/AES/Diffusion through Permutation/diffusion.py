@@ -40,6 +40,7 @@ def inv_mix_columns(s):
         s[i][3] ^= v
 
     mix_columns(s)
+    return s
 
 
 state = [

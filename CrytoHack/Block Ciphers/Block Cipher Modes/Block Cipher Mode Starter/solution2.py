@@ -1,37 +1,21 @@
-from Crypto.Cipher import AES
-import hashlib
-import random
+import requests
 
+url = 'http://aes.cryptohack.org/'
+encrypt = '/block_cipher_starter/encrypt_flag/'
+decrypt = '/block_cipher_starter/decrypt/'
 
-# /usr/share/dict/words from
-# https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words
-with open("/usr/share/dict/words") as f:
-    words = [w.strip() for w in f.readlines()]
-keyword = random.choice(words)
+#get the encryted flag from the website
+r = requests.get(url+encrypt)
 
-KEY = hashlib.md5(keyword.encode()).digest()
-FLAG = ?
+data = r.json()
+ciphertext = data['ciphertext']
 
+print(ciphertext)
 
-@chal.route('/passwords_as_keys/decrypt/<ciphertext>/<password_hash>/')
-def decrypt(ciphertext, password_hash):
-    ciphertext = bytes.fromhex(ciphertext)
-    key = bytes.fromhex(password_hash)
+#get the decrypted flag from the website
+r = requests.get(url+decrypt+ciphertext)
 
-    cipher = AES.new(key, AES.MODE_ECB)
-    try:
-        decrypted = cipher.decrypt(ciphertext)
-    except ValueError as e:
-        return {"error": str(e)}
+data = r.json()
+plaintext = data['plaintext']
 
-    return {"plaintext": decrypted.hex()}
-
-
-@chal.route('/passwords_as_keys/encrypt_flag/')
-def encrypt_flag():
-    cipher = AES.new(KEY, AES.MODE_ECB)
-    encrypted = cipher.encrypt(FLAG.encode())
-
-    return {"ciphertext": encrypted.hex()}
-
-
+print(bytes.fromhex(plaintext))
