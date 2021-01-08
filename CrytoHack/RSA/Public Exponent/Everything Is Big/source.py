@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+from Crypto.Util.number import getPrime, bytes_to_long, inverse
+from random import getrandbits
+from math import gcd
+
+FLAG = b"crypto{?????????????????????????}"
+
+m = bytes_to_long(FLAG)
+
+def get_huge_RSA():
+    p = getPrime(1024)
+    q = getPrime(1024)
+    print (p)
+    print (q)
+    N = p*q
+    phi = (p-1)*(q-1)
+    while True:
+        e = getrandbits(2048)
+        if gcd(e,phi) == 1:
+            break
+    print (phi)
+    return N,e
+
+N, e = get_huge_RSA()
+c = pow(m, e, N)
+
+print(f'N = {hex(N)}')
+print(f'e = {hex(e)}')
+print(f'c = {hex(c)}')
+
+from Crypto.Util.number import getPrime, inverse, bytes_to_long, long_to_bytes, GCD
+
+"""
+phi = 11879503736362375057841920912974741290998237307792615743143836834406456430737827700760094065843777400278093589569069633859028629338056050596739742982586062445076970042088393286157313072212691480964394089627098995084781177191936333755712266045366799364148909269176354337282183479949685081050930014534566355958460860954399566270065254210249604672183020843046399010105817907150616347646669258347785511730178576051444090826668647778212275233869044367369510670206326828335950607744099948552485283920670485603836981155112201294971153775410827834759385934496934369544867823620288786372751051860002651718180827697374398080960
+
+d =inverse(e, phi)
+
+pt = pow(c, d, N)
+
+print (pt)
+
+decrypted = long_to_bytes(pt)
+
+print (decrypted)
+"""
