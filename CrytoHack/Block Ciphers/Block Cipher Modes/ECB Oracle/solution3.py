@@ -1,7 +1,3 @@
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
-import requests
-
 ## 0000000000000000000000000000000000000000000000000000000000000000000000000000
 ## 65f4b06d7f0d63efcac7c5c0ceabbb0765f4b06d7f0d63efcac7c5c0ceabbb07ff4e720deb0cd91085e6d354f9e0395e4ce34d0ad3020e6fb718f949c20907b5
 ## 00000000000000000000000000000000000000000000000000000000000000000000000000
@@ -68,9 +64,8 @@ import requests
 ## 21bf123d846c7eddfbbbd48a8e3b3939d587a3273b31b6a778c6bfb23e24020bf788b27a7555f3aea210954b0ec88b72
 ## ff4e720deb0cd91085e6d354f9e0395e4ce34d0ad3020e6fb718f949c20907b5
 
-
 from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
+#from Crypto.Util.Padding import pad, unpad
 import requests
 
 url = 'http://aes.cryptohack.org/'
@@ -79,7 +74,6 @@ encrypt = '/ecb_oracle/encrypt/'
 from string import printable
 print (printable)
 
-"""
 for i in printable:
     a = str(i)
     b = a.encode('utf-8')
@@ -513,7 +507,6 @@ for i in printable:
     if j in str(ciphertext):
         print (a)
         print (d)
-"""
 
 for i in printable:
     a = str(i)
